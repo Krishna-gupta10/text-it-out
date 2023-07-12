@@ -42,12 +42,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-5">
           <Routes>
-            <Route
-              exact path="/"
-              element={
-                <TextForm heading="Enter Text Below:" mode={mode} showAlert={showAlert} />
-              }
-            />
+            <Route path="/text-it-out" element={ <TextForm heading="Enter Text Below:" mode={mode} showAlert={showAlert} />} />
             <Route exact path="/about" element= {
             <About mode={mode} title= "Text it Out!" description= "user-friendly app that empowers you to effortlessly manipulate text according to your needs. Whether you want to convert text to uppercase or lowercase, find and replace specific words or phrases, or simply copy text with a single tap. Easily transform your text into uppercase or lowercase letters with a quick touch. Perfect for adjusting the case of headlines, titles, or any text block."/> 
             } />

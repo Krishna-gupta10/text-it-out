@@ -1,0 +1,9 @@
+@media (min-width: 992px) {
+    .navbar-info {
+      visibility: hidden;
+      display: none;
+    }
+  }
+
+
+  
