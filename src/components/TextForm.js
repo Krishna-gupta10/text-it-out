@@ -92,17 +92,17 @@ export default function TextForm(props) {
           <textarea
             className="form-control" style={{ backgroundColor: props.mode === 'light' ? 'white' : '#585858', color: props.mode === 'light' ? 'black' : 'white' }} value={text} id="textbox" onChange={handleOnChange} rows="8"></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUppercase}><i class="bi bi-arrow-up"></i> UPPERCASE</button>
-        <button className="btn btn-primary mx-2" onClick={handleLowercase}><i class="bi bi-arrow-down"></i> lowercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleFind}><i class="bi bi-search"></i> Find </button>
-        <button className="btn btn-primary mx-2" onClick={handleReplace}><i class="bi bi-arrow-down-up"></i> Replace a Word</button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}><i class="bi bi-clipboard"></i> Copy to Clipboard</button>
-        <button className="btn btn-primary mx-2" onClick={handleClear}><i class="bi bi-x-lg"></i> Clear All</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleUppercase}><i class="bi bi-arrow-up"></i> UPPERCASE</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleLowercase}><i class="bi bi-arrow-down"></i> lowercase</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleFind}><i class="bi bi-search"></i> Find </button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleReplace}><i class="bi bi-arrow-down-up"></i> Replace a Word</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}><i class="bi bi-clipboard"></i> Copy to Clipboard</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleClear}><i class="bi bi-x-lg"></i> Clear All</button>
       </div>
 
       <div className={`container my-4 mx-2 text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
         <h2>Summary</h2>
-        <p> <b>{text.split(" ").length}</b> Words and <b>{text.length}</b> Characters</p>
+        <p> <b>{text.split(" ").filter((element)=>{return element.length !== 0}).length}</b> Words and <b>{text.length}</b> Characters</p>
         <p> You would need about <b>{text.length > 0 ? 0.008 * text.split(" ").length : 0}</b> minutes to read it.</p>
         <p> <b>PREVIEW</b><br />{text.length > 0 ? text : "*Your Text Preview Here*"}</p>
       </div>
