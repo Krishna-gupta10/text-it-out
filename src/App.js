@@ -49,7 +49,7 @@ function App() {
               }
             />
             <Route exact path="/about" element= {
-            <About mode={mode} title= "Text it Out!" description= "which lets you to modify / edit / manipulate your text." /> 
+            <About mode={mode} title= "Text it Out!" description= "user-friendly app that empowers you to effortlessly manipulate text according to your needs. Whether you want to convert text to uppercase or lowercase, find and replace specific words or phrases, or simply copy text with a single tap. Easily transform your text into uppercase or lowercase letters with a quick touch. Perfect for adjusting the case of headlines, titles, or any text block."/> 
             } />
           </Routes>
         </div>

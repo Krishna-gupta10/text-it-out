@@ -15,8 +15,9 @@ export default function TextForm(props) {
     if (text.length === 0) {
       props.showAlert("Textbox is Empty", "danger");
     }
+
     else {
-    setText(text.toLowerCase());
+      setText(text.toLowerCase());
     }
   };
 
@@ -25,26 +26,26 @@ export default function TextForm(props) {
       props.showAlert("Textbox is Empty", "danger");
     }
     else {
-    let a = prompt('Enter your word');
-    if (a != null) {
-      let i, j, x = 0, y = 0;
+      let a = prompt('Enter your word');
+      if (a != null) {
+        let i, j, x = 0, y = 0;
 
-      for (i = 0; i < text.length; i++) {
-        if (text[i] === a[0]) {
-          for (j = i; j < i + a.length; j++) {
-            if (text[j] === a[j - i]) {
-              y++;
+        for (i = 0; i < text.length; i++) {
+          if (text[i] === a[0]) {
+            for (j = i; j < i + a.length; j++) {
+              if (text[j] === a[j - i]) {
+                y++;
+              }
+              if (y === a.length) {
+                x++;
+              }
             }
-            if (y === a.length) {
-              x++;
-            }
+            y = 0;
           }
-          y = 0;
         }
+        alert("'" + a + "' was found " + x + " times.");
       }
-      alert("'" + a + "' was found " + x + " times.");
     }
-  }
   };
 
   const handleReplace = () => {
@@ -52,23 +53,21 @@ export default function TextForm(props) {
       props.showAlert("Textbox is Empty", "danger");
     }
     else {
-    let a = prompt("Enter word to replace: ");
-    let b = prompt("Enter word to replace with: ");
+      let a = prompt("Enter word to replace: ");
+      let b = prompt("Enter word to replace with: ");
 
-    setText(text.replace(a, b));
+      setText(text.replace(a, b));
     }
   };
 
   const handleCopy = () => {
-    
+
     if (text.length === 0) {
       props.showAlert("Textbox is Empty", "danger");
     }
 
     else {
-      let a = document.getElementById('textbox');
-      a.select(); //To select whole text
-      navigator.clipboard.writeText(a.value); //To copy the value into clipboard
+      navigator.clipboard.writeText(text); //To copy the value into clipboard
       props.showAlert("Copied to Clipboard", "success");
     }
   };
@@ -92,17 +91,17 @@ export default function TextForm(props) {
           <textarea
             className="form-control" style={{ backgroundColor: props.mode === 'light' ? 'white' : '#585858', color: props.mode === 'light' ? 'black' : 'white' }} value={text} id="textbox" onChange={handleOnChange} rows="8"></textarea>
         </div>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleUppercase}><i class="bi bi-arrow-up"></i> UPPERCASE</button>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleLowercase}><i class="bi bi-arrow-down"></i> lowercase</button>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleFind}><i class="bi bi-search"></i> Find </button>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleReplace}><i class="bi bi-arrow-down-up"></i> Replace a Word</button>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}><i class="bi bi-clipboard"></i> Copy to Clipboard</button>
-        <button className="btn btn-primary mx-2 my-1" onClick={handleClear}><i class="bi bi-x-lg"></i> Clear All</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleUppercase}><i className= "bi bi-arrow-up"></i> UPPERCASE</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleLowercase}><i className= "bi bi-arrow-down"></i> lowercase</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleFind}><i className= "bi bi-search"></i> Find </button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleReplace}><i className= "bi bi-arrow-down-up"></i> Replace a Word</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}><i className= "bi bi-clipboard"></i> Copy to Clipboard</button>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleClear}><i className= "bi bi-x-lg"></i> Clear All</button>
       </div>
 
       <div className={`container my-4 mx-2 text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
         <h2>Summary</h2>
-        <p> <b>{text.split(" ").filter((element)=>{return element.length !== 0}).length}</b> Words and <b>{text.length}</b> Characters</p>
+        <p> <b>{text.split(/\s/).filter((element) => { return element.length !== 0 }).length}</b> Words and <b>{text.length}</b> Characters</p>
         <p> You would need about <b>{text.length > 0 ? 0.008 * text.split(" ").length : 0}</b> minutes to read it.</p>
         <p> <b>PREVIEW</b><br />{text.length > 0 ? text : "*Your Text Preview Here*"}</p>
       </div>

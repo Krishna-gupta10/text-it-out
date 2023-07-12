@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 export default function About(props) {
   return (
-    <div className={`container text-${props.mode === 'dark'?'light':'dark'}`}>
-     <p>{props.title} is a simple quick-use tool {props.description}</p> 
-      <p>This application is created using ReactJS.</p>
+    <div className={`container bg-${props.mode} text-${props.mode==='dark'?'light':'dark'}`} >
+     <p>{props.title} is a simple {props.description}</p> 
+      <p>This application is created using ReactJS by <Link to= 'https://github.com/WoKrishhnaHai'><i className="bi bi-github"></i> Krishna Gupta</Link></p>
     </div>
   )
 }
